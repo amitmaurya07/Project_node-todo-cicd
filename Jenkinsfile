@@ -1,28 +1,22 @@
-pipeline {
-    agent { label 'node-agent' }
-    
+pipeline{
+    agent any 
     stages{
-        stage('Code'){
+        stage("Code")
+        {
             steps{
-                git url: 'https://github.com/LondheShubham153/node-todo-cicd.git', branch: 'master' 
+                git 'https://github.com/amitmaurya07/Project_node-todo-cicd.git'
             }
         }
-        stage('Build and Test'){
+        stage("Build the Docker Image")
+        {
             steps{
-                sh 'docker build . -t trainwithshubham/node-todo-test:latest'
+                sh 'docker build -t django-react:1 .'
             }
         }
-        stage('Push'){
+        stage("Run the Container")
+        {    
             steps{
-                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-        	     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                 sh 'docker push trainwithshubham/node-todo-test:latest'
-                }
-            }
-        }
-        stage('Deploy'){
-            steps{
-                sh "docker-compose down && docker-compose up -d"
+                sh 'docker run -d --name django-container -p 8000:8000 django-react:1'
             }
         }
     }
