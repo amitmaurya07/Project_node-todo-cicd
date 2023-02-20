@@ -11,7 +11,7 @@ pipeline{
         {
             agent{
                 docker {
-                    image 'to-do-Django-react:1'
+                    image 'to-do-django-react:1'
                     reuseNode true
                 }
             }
@@ -22,7 +22,7 @@ pipeline{
         stage("Run the Container")
         {    
             steps{
-                sh 'docker run -d --name django-container -p 8000:8000 to-do-Django-react:1'
+                sh 'docker run -d --name django-container -p 8000:8000 to-do-django-react:1'
             }
         }
     }
