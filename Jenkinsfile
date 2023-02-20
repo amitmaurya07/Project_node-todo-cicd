@@ -9,14 +9,20 @@ pipeline{
         }
         stage("Build the Docker Image")
         {
+            agent{
+                docker {
+                    image 'To-Do-Django-react:1'
+                    reuseNode true
+                }
+            }
             steps{
-                sh 'docker build -t django-react:1 .'
+                echo "Build the code on the Docker Agent"
             }
         }
         stage("Run the Container")
         {    
             steps{
-                sh 'docker run -d --name django-container -p 8000:8000 django-react:1'
+                sh 'docker run -d --name django-container -p 8000:8000 To-Do-Django-react:1'
             }
         }
     }
