@@ -21,7 +21,7 @@ pipeline{
             steps{
                 withCredentials([string(credentialsId: 'amaurya07', variable: 'dockerhubpasswd')]) 
                 {
-                    sh 'docker login -u amaurya07 -p $(dockerhubpasswd)'
+                    sh 'docker login -u amaurya07 -p ${dockerhubpasswd}'
                     sh 'docker push amaurya07/to-do-django-react:1'
  
                  }
