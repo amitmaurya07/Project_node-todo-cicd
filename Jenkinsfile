@@ -13,6 +13,7 @@ pipeline{
             agent{
                 docker{
                     image 'amaurya07/to-do-django-react:1'
+                    reuseNode true
                     
                 }
                 step{
