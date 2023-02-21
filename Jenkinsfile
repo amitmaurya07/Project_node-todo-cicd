@@ -10,11 +10,9 @@ pipeline{
         
         stage("Build the Docker Image")
         {
-            agent{
-                docker {
-                    image 'amaurya07/to-do-django-react:1'
-                    reuseNode true
-                }
+            steps{
+                sh 'docker build -t amaurya07/to-do-django-react:1 .'
+            }
             }
             steps{
                 echo "Build the code on the Docker Agent"
