@@ -10,9 +10,14 @@ pipeline{
         
         stage("Build the Docker Image")
         {
-            steps{
-                sh 'docker build -t amaurya07/to-do-django-react:1 .'
-                echo "Build the code on the Docker Agent"
+            agent{
+                docker{
+                    image 'amaurya07/to-do-django-react:1'
+                    
+                }
+                step{
+                    echo 'Image has been built'
+                }
             }
         }
 
