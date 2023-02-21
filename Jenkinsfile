@@ -1,5 +1,8 @@
 pipeline{
     agent any 
+    environment{
+        DOCKERHUB_CREDENTIALS= credentials('DockerHub')
+    }
     stages{
         stage("Code")
         {
@@ -25,7 +28,7 @@ pipeline{
         {
             steps{
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DockerHub Password', usernameVariable: 'DockerHub')]) {
-                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                    sh "docker login -u amaurya07 -p ${env.DockerHub Password}"
                     sh 'docker push amaurya07/to-do-django-react:1 '
                 }
             }        
