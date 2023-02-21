@@ -7,6 +7,7 @@ pipeline{
                 git 'https://github.com/amitmaurya07/Project_node-todo-cicd.git'
             }
         }
+        
         stage("Build the Docker Image")
         {
             agent{
@@ -19,6 +20,17 @@ pipeline{
                 echo "Build the code on the Docker Agent"
             }
         }
+
+        stage("Pushing the Image to DockerHub")
+        {
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DockerHub Password', usernameVariable: 'DockerHub')]) {
+                    sh 'docker push amaurya07/to-do-django-react:1 '
+                }
+            }        
+
+        }
+        
         stage("Run the Container")
         {    
             steps{
