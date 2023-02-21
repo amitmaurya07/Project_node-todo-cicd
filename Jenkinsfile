@@ -12,7 +12,7 @@ pipeline{
         {
             agent{
                 docker {
-                    image 'to-do-django-react:1'
+                    image 'amaurya07/to-do-django-react:1'
                     reuseNode true
                 }
             }
