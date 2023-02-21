@@ -16,10 +16,10 @@ pipeline{
                     reuseNode true
                     
                 }
-                step{
-                    echo 'Image has been built'
-                }
             }
+                 steps{
+                    echo 'Image has been built'
+                 }
         }
 
         stage("Pushing the Image to DockerHub")
