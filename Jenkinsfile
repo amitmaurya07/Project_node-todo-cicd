@@ -27,10 +27,13 @@ pipeline{
         stage("Pushing the Image to DockerHub")
         {
             steps{
-                withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DockerHub Password', usernameVariable: 'DockerHub')]) {
-                    sh "docker login -u amaurya07 -p ${env.DockerHub Password}"
-                    sh 'docker push amaurya07/to-do-django-react:1 '
-                }
+                withCredentials([string(credentialsId: 'amaurya07', variable: 'dockerhubpasswd')]) 
+                {
+                    sh 'docker login -u amaurya07 -p $(dockerhubpasswd)'
+                    sh 'docker push amaurya07/to-do-django-react:1'
+ 
+                 }
+                
             }        
 
         }
