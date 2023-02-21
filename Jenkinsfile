@@ -33,7 +33,7 @@ pipeline{
         stage("Run the Container")
         {    
             steps{
-                sh 'docker run -d --name django-container -p 8000:8000 to-do-django-react:1'
+                sh 'docker run -d --name django-container -p 8000:8000 amaurya07/to-do-django-react:1'
             }
         }
     }
