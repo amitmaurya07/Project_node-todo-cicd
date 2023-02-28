@@ -21,20 +21,6 @@ pipeline{
                     echo 'Image has been built'
                  }
         }
-
-        stage("Pushing the Image to DockerHub")
-        {
-            steps{
-                withCredentials([string(credentialsId: 'amaurya07', variable: 'dockerhubpasswd')]) 
-                {
-                    sh 'docker login -u amaurya07 -p ${dockerhubpasswd}'
-                    sh 'docker push amaurya07/to-do-django-react:1'
- 
-                 }
-                
-            }        
-
-        }
         
         stage("Run the Container")
         {    
