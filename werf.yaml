@@ -2,5 +2,5 @@ configVersion: 1
 project: myproject
 ---
 image: app
-dockerfile: Dockerfile
-context: werf-implementation/to-do cicd/buildah/werf.yaml
+dockerfile: /app/Dockerfile
+context: werf-implementation/to-do cicd/werf.yaml
