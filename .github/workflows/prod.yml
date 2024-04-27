@@ -16,7 +16,6 @@ jobs:
       - uses: werf/actions/install@v1.2
 
       - run: |
-          # source "$(werf ci-env github --as-file)"
           werf converge
         env:
           WERF_ENV: prod
