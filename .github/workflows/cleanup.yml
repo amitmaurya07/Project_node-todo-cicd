@@ -14,7 +14,7 @@ jobs:
       - uses: werf/actions/install@v1.2
 
       - run: |
-          source "$(werf ci-env github --as-file)"
+          # source "$(werf ci-env github --as-file)"
           werf cleanup
         env:
           WERF_KUBECONFIG_BASE64: ${{ secrets.KUBECONFIG_BASE64 }}
