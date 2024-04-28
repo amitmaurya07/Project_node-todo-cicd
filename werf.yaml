@@ -3,4 +3,3 @@ project: myproject
 ---
 image: app
 dockerfile: Dockerfile
-context: Project_node-todo-cicd
