@@ -16,7 +16,7 @@ jobs:
       - uses: werf/actions/install@v1.2
 
       - run: |
-          werf converge
+          werf converge --repo=amitmau07/werf-guide-app:c6052aca675d5d57c1afc25539f81c1c09f3f6c794ccd8b5c9da4b82-1712991600132
         env:
           WERF_ENV: prod
           WERF_KUBECONFIG_BASE64: ${{ secrets.KUBECONFIG_BASE64 }}
