@@ -17,7 +17,7 @@ jobs:
 
       - run: |
           werf build
-          werf converge --repo amitmau07/myproject
+          werf converge --repo amitmau07/werf-guide-app
         env:
           WERF_ENV: prod
           WERF_KUBECONFIG_BASE64: ${{ secrets.KUBECONFIG_BASE64 }}
