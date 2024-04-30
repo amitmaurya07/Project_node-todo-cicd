@@ -18,7 +18,6 @@ jobs:
 
       - uses: werf/actions/install@v1.2
       - run: |
-          # werf build
           werf converge --repo amitmau07/newimage
         env:
           WERF_ENV: prod
