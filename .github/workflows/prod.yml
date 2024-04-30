@@ -13,8 +13,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: werf/actions/install@v1.2
+      - uses: actions/checkout@v1
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
+      - uses: werf/actions/install@v1.2
       - run: |
           # werf build
           werf converge --repo amitmau07/newimage
