@@ -17,8 +17,10 @@ jobs:
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
       - uses: werf/actions/install@v1.2
+        with:
+          kube-config-base64: ${{ secrets.KUBECONFIG_BASE64 }}
       - run: |
+         . $(werf ci-env github --as-file)
           werf converge --repo amitmau07/newimage
         env:
           WERF_ENV: prod
-          WERF_KUBECONFIG_BASE64: ${{ secrets.KUBECONFIG_BASE64 }}
